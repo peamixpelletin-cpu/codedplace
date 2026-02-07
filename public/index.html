@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hide & Seek Helper</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="screen">
+      <section id="enroll-screen" class="panel">
+        <h1 class="title">[JUDGE]</h1>
+        <p class="subtitle">ENTER YOUR ID</p>
+        <form id="enroll-form" class="enroll-form">
+          <input id="id-input" type="text" inputmode="numeric" placeholder="ID" maxlength="6" />
+          <button type="submit">ENTER</button>
+        </form>
+        <p id="enroll-message" class="message"></p>
+      </section>
+
+      <section id="game-screen" class="panel hidden">
+        <header class="header">
+          <h1 id="phase-title" class="title">[JUDGE]</h1>
+          <p id="round-label" class="round">[ROUND 1]</p>
+        </header>
+        <div class="role-block">
+          <p id="role-label" class="role">[WAITING]</p>
+        </div>
+        <div id="info-block" class="info">&nbsp;</div>
+        <div id="timer" class="timer">[--:--]</div>
+        <div id="action-area" class="actions"></div>
+        <div id="admin-panel" class="admin hidden">
+          <h2>ADMIN CONTROLS</h2>
+          <button id="start-game" class="primary">START GAME</button>
+          <button id="end-game" class="secondary">END GAME</button>
+          <h3>ENROLLED PARTICIPANTS</h3>
+          <ul id="participant-list"></ul>
+        </div>
+      </section>
+
+      <section id="catch-screen" class="panel hidden">
+        <h1 class="title">[CAUGHT]</h1>
+        <p id="catch-text" class="subtitle"></p>
+        <div class="actions">
+          <button id="confirm-catch" class="primary">CONFIRM</button>
+          <button id="deny-catch" class="secondary">DENY</button>
+        </div>
+      </section>
+
+      <section id="minigame-screen" class="panel hidden">
+        <h1 class="title">[MINIGAME]</h1>
+        <p class="subtitle">PICK A TILE. LOSER BECOMES SEEKER.</p>
+        <div class="tile-grid">
+          <button class="tile" data-choice="A">A</button>
+          <button class="tile" data-choice="B">B</button>
+          <button class="tile" data-choice="C">C</button>
+        </div>
+        <p id="minigame-status" class="message"></p>
+      </section>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
