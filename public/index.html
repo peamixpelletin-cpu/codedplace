@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codedplace</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <section id="login" class="slide active">
+      <div class="content">
+        <h1>ENTER ID</h1>
+        <input id="login-input" type="text" inputmode="numeric" placeholder="ID" />
+        <button id="login-button">LOGIN</button>
+        <p id="login-error" class="error"></p>
+      </div>
+    </section>
+
+    <section id="main" class="slide">
+      <div class="corner" id="user-info"></div>
+      <button id="admin-toggle" class="admin-toggle hidden">⚙️ Admin</button>
+      <div class="content">
+        <h1 id="title">LOBBY</h1>
+        <h2 id="subtitle"></h2>
+        <p id="info"></p>
+        <div id="timer" class="timer"></div>
+        <button id="join-button" class="hidden">JOIN</button>
+        <button id="found-button" class="hidden">I FOUND SOMEONE</button>
+        <div id="hider-selection" class="selection hidden">
+          <h3>HIDER SELECTION</h3>
+          <p>PLEASE SELECT THE HIDER YOU FOUND</p>
+          <div id="hider-list"></div>
+        </div>
+        <div id="catch-confirm" class="selection hidden">
+          <h3>CAUGHT</h3>
+          <p id="catch-text"></p>
+          <div class="button-row">
+            <button id="confirm-catch">CONFIRM</button>
+            <button id="deny-catch">DENY</button>
+          </div>
+        </div>
+        <div id="minigame" class="selection hidden">
+          <h3>REACTION TAP</h3>
+          <p id="minigame-text">WAIT FOR GREEN...</p>
+          <button id="tap-button" class="tap">TAP</button>
+        </div>
+        <p id="status-message" class="status"></p>
+      </div>
+
+      <aside id="admin-panel" class="admin-panel hidden">
+        <header>
+          <h3>ADMIN PANEL</h3>
+          <button id="admin-close">CLOSE</button>
+        </header>
+        <div class="tabs">
+          <button data-tab="players" class="tab active">Players</button>
+          <button data-tab="game" class="tab">Game</button>
+          <button data-tab="timers" class="tab">Timers</button>
+          <button data-tab="slides" class="tab">Slides</button>
+          <button data-tab="cheats" class="tab">Cheats</button>
+          <button data-tab="debug" class="tab">Debug</button>
+        </div>
+        <div class="tab-content" id="tab-players">
+          <div id="admin-player-list"></div>
+          <div class="admin-swap">
+            <label>Swap roles
+              <select id="swap-a"></select>
+            </label>
+            <label>
+              <select id="swap-b"></select>
+            </label>
+            <button id="swap-roles">Swap</button>
+          </div>
+        </div>
+        <div class="tab-content hidden" id="tab-game">
+          <button id="admin-start">Start Game</button>
+          <button id="admin-end">End Game</button>
+          <button id="admin-end-round">Force End Round</button>
+          <button id="admin-next-round">Force Next Round</button>
+        </div>
+        <div class="tab-content hidden" id="tab-timers">
+          <label>Set timer (seconds)
+            <input id="timer-value" type="number" min="0" />
+          </label>
+          <button id="timer-set">Set</button>
+          <button id="timer-pause">Pause</button>
+          <button id="timer-unpause">Unpause</button>
+          <button id="timer-skip">Skip to 0</button>
+        </div>
+        <div class="tab-content hidden" id="tab-slides">
+          <label>Custom slide message
+            <textarea id="slide-message"></textarea>
+          </label>
+          <label>
+            <input id="slide-block" type="checkbox" checked /> Block input
+          </label>
+          <label>
+            <input id="slide-timer" type="checkbox" /> Include timer
+          </label>
+          <button id="slide-send">Send Slide</button>
+        </div>
+        <div class="tab-content hidden" id="tab-cheats">
+          <button id="cheat-reroll">Reroll Seeker</button>
+          <label>Force next seeker
+            <select id="force-seeker"></select>
+          </label>
+          <button id="cheat-force">Force Seeker</button>
+          <label>Force minigame loser
+            <select id="force-loser"></select>
+          </label>
+          <button id="cheat-loser">Force Loser</button>
+          <label>Trigger caught prompt
+            <select id="trigger-caught"></select>
+          </label>
+          <button id="cheat-caught">Trigger</button>
+          <div class="button-row">
+            <button data-sound="tick" class="sound-test">Tick Sound</button>
+            <button data-sound="expire" class="sound-test">Expire Sound</button>
+            <button data-sound="caught_alert" class="sound-test">Caught Alert</button>
+          </div>
+        </div>
+        <div class="tab-content hidden" id="tab-debug">
+          <button id="debug-state">Show State JSON</button>
+          <pre id="state-json"></pre>
+          <button id="debug-reset">Reset Everything</button>
+        </div>
+      </aside>
+    </section>
+
+    <section id="overlay" class="overlay hidden">
+      <div class="content">
+        <h1 id="overlay-title"></h1>
+        <h2 id="overlay-subtitle"></h2>
+        <div id="overlay-timer" class="timer"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
