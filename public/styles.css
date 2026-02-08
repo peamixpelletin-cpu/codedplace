@@ -1,0 +1,235 @@
+:root {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: #fefefe;
+  color: #000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: #fff;
+}
+
+body.blocked .slide.active {
+  pointer-events: none;
+}
+
+#app {
+  height: 100vh;
+}
+
+.slide {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  padding: 24px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #fff;
+}
+
+.slide.active {
+  display: flex;
+}
+
+.content {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+h1 {
+  font-size: clamp(2rem, 8vw, 4rem);
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 5vw, 2.5rem);
+  margin: 0;
+}
+
+p {
+  font-size: clamp(1rem, 4vw, 1.6rem);
+  white-space: pre-line;
+  margin: 0;
+}
+
+.timer {
+  font-size: clamp(2rem, 7vw, 3.5rem);
+  font-weight: 700;
+  color: #000;
+}
+
+.timer.running {
+  color: #c40000;
+}
+
+button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+button:disabled {
+  opacity: 0.5;
+}
+
+input, textarea, select {
+  width: min(320px, 80vw);
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 2px solid #000;
+  text-align: center;
+}
+
+textarea {
+  height: 80px;
+}
+
+.corner {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.admin-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #222;
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+.selection {
+  border: 2px solid #000;
+  padding: 16px;
+  width: min(360px, 90vw);
+}
+
+.selection button {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.button-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.button-row button {
+  flex: 1;
+}
+
+.status {
+  font-size: 1rem;
+  color: #c40000;
+}
+
+.error {
+  color: #c40000;
+}
+
+.admin-panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: min(360px, 90vw);
+  background: #f5f5f5;
+  border-left: 2px solid #000;
+  padding: 16px;
+  overflow-y: auto;
+  z-index: 20;
+}
+
+.admin-panel header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.tab {
+  padding: 6px 10px;
+  background: #ddd;
+  color: #000;
+}
+
+.tab.active {
+  background: #000;
+  color: #fff;
+}
+
+.tab-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.admin-row button,
+.admin-row select {
+  font-size: 0.75rem;
+}
+
+.admin-swap {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.tap {
+  background: #0f0;
+  color: #000;
+  font-size: 1.5rem;
+  padding: 18px 24px;
+}
