@@ -1,0 +1,215 @@
+:root {
+  font-family: 'Roboto Mono', 'Courier New', monospace;
+  color: #111;
+  background: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.panel {
+  display: none;
+  width: 100%;
+  max-width: 960px;
+}
+
+.panel.active {
+  display: block;
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+  text-transform: uppercase;
+}
+
+input, select, textarea, button {
+  font-family: inherit;
+  padding: 10px 12px;
+  font-size: 1rem;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #c1121f;
+}
+
+.user-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+  gap: 16px;
+}
+
+.user-view .title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.user-view .role {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.user-view .subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.8rem);
+  max-width: 480px;
+}
+
+.user-view .timer {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  letter-spacing: 3px;
+}
+
+.user-view .round {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.timer.running {
+  color: #c1121f;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tabs button {
+  background: #fff;
+  color: #111;
+}
+
+.tabs button.active {
+  background: #111;
+  color: #fff;
+}
+
+.tab-content {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tab-content.active {
+  display: flex;
+}
+
+.card {
+  border: 1px solid #111;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #111;
+  padding: 8px;
+}
+
+.list-item .meta {
+  font-size: 0.9rem;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timer-preview {
+  font-size: 2rem;
+}
+
+.preview {
+  background: #f7f7f7;
+}
+
+.admin-preview {
+  min-height: 300px;
+  border: 1px solid #111;
+  padding: 16px;
+}
+
+#roleMessageRows {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .form-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+}
