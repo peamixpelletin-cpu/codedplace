@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hide & Seek Judge</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="app">
+    <section id="landing" class="panel active">
+      <h1>Hide &amp; Seek Judge</h1>
+      <p>Enter your reference code to continue.</p>
+      <input id="referenceCode" type="text" placeholder="XXXX-XXXX-XXXX-XXXX" autocomplete="off" />
+      <button id="loginButton">Continue</button>
+      <p id="loginError" class="error"></p>
+    </section>
+
+    <section id="profile" class="panel">
+      <h2>Create Profile</h2>
+      <label>
+        Username
+        <input id="usernameInput" type="text" placeholder="Enter username" />
+      </label>
+      <label>
+        Profile Picture (optional)
+        <input id="avatarInput" type="file" accept="image/png,image/jpeg,image/gif" />
+      </label>
+      <button id="profileSubmit">Submit</button>
+      <p id="profileError" class="error"></p>
+    </section>
+
+    <section id="userView" class="panel user-view">
+      <div class="round" id="roundLabel"></div>
+      <div class="title" id="titleText">[READY]</div>
+      <div class="role" id="roleText"></div>
+      <div class="subtitle" id="subtitleText">Awaiting instructions.</div>
+      <div class="timer" id="timerText">[00:00]</div>
+    </section>
+
+    <section id="admin" class="panel">
+      <header class="admin-header">
+        <h2>Admin Dashboard</h2>
+      </header>
+      <nav class="tabs">
+        <button data-tab="users" class="active">User Management</button>
+        <button data-tab="game">Game Management</button>
+        <button data-tab="judge">Judge Management</button>
+      </nav>
+
+      <div class="tab-content" id="tab-users">
+        <div class="card">
+          <h3>Add Reference</h3>
+          <div class="form-row">
+            <input id="codeUses" type="number" min="1" placeholder="Uses" />
+            <input id="codeExpiry" type="number" min="0" placeholder="Expiry (minutes)" />
+            <select id="codePermission">
+              <option value="User">User</option>
+              <option value="Admin">Admin</option>
+            </select>
+            <button id="createCode">Generate</button>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Active Codes</h3>
+          <div id="codeList" class="list"></div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-game">
+        <div class="card">
+          <h3>Lobby</h3>
+          <div id="userList" class="list"></div>
+        </div>
+        <div class="card">
+          <h3>Roles</h3>
+          <div class="form-row">
+            <input id="newRole" type="text" placeholder="Role name" />
+            <button id="addRole">Add Role</button>
+          </div>
+          <div id="roleList" class="list"></div>
+          <button id="randomizeRoles">Randomize Roles</button>
+        </div>
+        <div class="card">
+          <h3>Rounds</h3>
+          <label class="toggle">
+            <input id="roundToggle" type="checkbox" />
+            Enable Rounds
+          </label>
+          <input id="roundNumber" type="number" min="1" placeholder="Round Number" />
+          <button id="roundUpdate">Update</button>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-judge">
+        <div class="card">
+          <h3>Broadcast Message</h3>
+          <input id="broadcastTitle" type="text" placeholder="Title" />
+          <input id="broadcastSubtitle" type="text" placeholder="Subtitle" />
+          <button id="sendBroadcast">Send</button>
+        </div>
+        <div class="card">
+          <h3>Role Messages</h3>
+          <label class="toggle">
+            <input id="roleToggle" type="checkbox" />
+            Target Specific Roles
+          </label>
+          <div id="roleMessageRows"></div>
+          <button id="sendRoleMessage">Send Role Messages</button>
+        </div>
+        <div class="card">
+          <h3>Timer</h3>
+          <input id="timerSeconds" type="number" min="0" placeholder="Seconds" />
+          <div class="form-row">
+            <button id="timerStart">Start</button>
+            <button id="timerPause">Pause</button>
+            <button id="timerStop">Stop</button>
+          </div>
+          <div class="timer-preview" id="timerPreview">[00:00]</div>
+        </div>
+        <div class="card">
+          <h3>Scripting Engine</h3>
+          <textarea id="scriptArea" rows="8" placeholder="TIMER 30\nWAIT 5\nBROADCAST TITLE \"JUDGE\" SUB \"GAME ON\""></textarea>
+          <div class="form-row">
+            <button id="runScript">Run Script</button>
+            <button id="pauseScript">Pause Script</button>
+          </div>
+          <p id="scriptStatus"></p>
+        </div>
+        <div class="card preview">
+          <h3>Client Preview</h3>
+          <div id="adminPreview" class="user-view admin-preview">
+            <div class="round" id="previewRound"></div>
+            <div class="title" id="previewTitle">[READY]</div>
+            <div class="role" id="previewRole"></div>
+            <div class="subtitle" id="previewSubtitle">Awaiting instructions.</div>
+            <div class="timer" id="previewTimer">[00:00]</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <audio id="majorAlert" src="/audio/major-alert.mp3"></audio>
+  <audio id="minorAlert" src="/audio/minor-alert.mp3"></audio>
+  <audio id="tickSound" src="/audio/tick.mp3"></audio>
+  <audio id="alarmSound" src="/audio/alarm.mp3"></audio>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
